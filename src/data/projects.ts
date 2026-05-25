@@ -14,6 +14,34 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    title: "Halfsies",
+    eyebrow: "Featured build",
+    description:
+      "A full-stack app for splitting shared expenses and tracking who owes what, planned around clean workflows, reliable persistence, and a simple user experience.",
+    impact:
+      "Planned to show practical database-backed product work: users, shared records, balances, and clear state changes.",
+    role: "Full-stack implementation, database design, product workflow",
+    year: "TBD",
+    status: "In Progress",
+    featured: true,
+    tags: ["Full-Stack", "Database", "Product UI", "Expense Tracking", "OCR"],
+    sourceUrl: "https://github.com/eCabrera07/Halfsies",
+  },
+  {
+    title: "QueM",
+    eyebrow: "Featured build",
+    description:
+      "A native Android queue manager for capturing projects, tasks, and follow-ups, then moving them through a clear local-first workflow.",
+    impact:
+      "Shows mobile product engineering with persisted Room data, Jetpack Compose screens, queue lifecycle states, attachments, and planned Google Drive sync.",
+    role: "Android implementation, local persistence, sync architecture",
+    year: "2026",
+    status: "In Progress",
+    featured: true,
+    tags: ["Kotlin", "Android", "Jetpack Compose", "Room", "Google Drive"],
+    sourceUrl: "https://github.com/eCabrera07/QueM",
+  },
+  {
     title: "Full-Stack Application",
     eyebrow: "Project track",
     description:
