@@ -16,6 +16,20 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    title: "Grouphug",
+    eyebrow: "Featured build",
+    description:
+      "A Magic: The Gathering card scanner and collection manager that identifies physical cards, saves them to a searchable collection, and organizes them into nested storage boxes.",
+    impact:
+      "Shows full-stack product work across React, FastAPI, PostgreSQL, Redis, OCR, OpenCV card detection, Scryfall catalog imports, and bulk collection workflows.",
+    role: "Full-stack implementation, OCR pipeline, database design, product workflow",
+    year: "2026",
+    status: "In Progress",
+    featured: true,
+    tags: ["React", "FastAPI", "PostgreSQL", "Redis", "OCR", "Collab"],
+    sourceUrl: "https://github.com/ERA120/Grouphug",
+  },
+  {
     title: "Halfsies",
     eyebrow: "Featured build",
     description:
@@ -46,45 +60,6 @@ export const projects: Project[] = [
     sourceUrl: "https://github.com/eCabrera07/QueM",
   },
   {
-    title: "Full-Stack Application",
-    eyebrow: "Project track",
-    description:
-      "A database-backed web application that will show how I structure frontend workflows, backend APIs, and persistent data around a real user problem.",
-    impact:
-      "Planned as the main case study for demonstrating end-to-end product thinking and production-minded engineering.",
-    role: "Full-stack implementation, API design, database modeling",
-    year: "TBD",
-    status: "Planned",
-    featured: true,
-    tags: ["React", "API Design", "Database", "Full-Stack"],
-  },
-  {
-    title: "Database Reporting System",
-    eyebrow: "Project track",
-    description:
-      "A reporting-focused project for turning stored data into useful views, filters, and summaries that support decisions instead of just displaying records.",
-    impact:
-      "Planned to highlight database querying, data modeling, and practical UI for exploring information.",
-    role: "Schema design, query logic, dashboard UI",
-    year: "TBD",
-    status: "Planned",
-    featured: true,
-    tags: ["SQL", "Reporting", "Data Modeling", "Dashboards"],
-  },
-  {
-    title: "API and Data Workflow",
-    eyebrow: "Project track",
-    description:
-      "A backend-centered project for moving data through reliable API endpoints, validation, persistence, and operational workflows.",
-    impact:
-      "Planned to show backend fundamentals: clean contracts, predictable data flow, and maintainable service boundaries.",
-    role: "Backend engineering, validation, data flow",
-    year: "TBD",
-    status: "Planned",
-    featured: true,
-    tags: ["Backend", "REST APIs", "Validation", "Persistence"],
-  },
-  {
     title: "Global Game Jam",
     eyebrow: "Earlier work",
     description:
@@ -96,20 +71,7 @@ export const projects: Project[] = [
     featured: false,
     tags: ["JavaScript", "Game Jam", "Prototyping"],
     sourceUrl: "https://github.com/eCabrera07/GGJ",
-  },
-  {
-    title: "Date Utility Library",
-    eyebrow: "Earlier work",
-    description:
-      "A compact C++ date class for parsing, validating, and manipulating calendar values with a focus on core programming fundamentals.",
-    impact: "Practiced API design, edge-case handling, and low-level implementation details.",
-    role: "C++ implementation, validation logic",
-    year: "2017",
-    status: "Archived",
-    featured: false,
-    tags: ["C++", "OOP", "Algorithms"],
-    sourceUrl: "https://github.com/eCabrera07/Date-Class",
-  },
+  }
 ];
 
 export const featuredProjects = projects.filter((project) => project.featured);
