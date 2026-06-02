@@ -8,6 +8,8 @@ export interface Project {
   status: string;
   featured: boolean;
   tags: string[];
+  demoVideoUrl?: string;
+  demoVideoLabel?: string;
   liveUrl?: string;
   sourceUrl?: string;
 }
@@ -39,6 +41,8 @@ export const projects: Project[] = [
     status: "In Progress",
     featured: true,
     tags: ["Kotlin", "Android", "Jetpack Compose", "Room", "Google Drive"],
+    demoVideoUrl: "/videos/quem-portfolio-demo-human-voiceover.mp4",
+    demoVideoLabel: "Watch QueM walkthrough",
     sourceUrl: "https://github.com/eCabrera07/QueM",
   },
   {

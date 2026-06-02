@@ -1,4 +1,4 @@
-import { ArrowUpRight, Github } from "lucide-react";
+import { ArrowUpRight, CirclePlay, Github } from "lucide-react";
 import type { Project } from "@/data/projects";
 
 export function ProjectCard({ project, index }: { project: Project; index: number }) {
@@ -47,6 +47,18 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
         </div>
 
         <div className="mt-8 flex gap-3">
+          {project.demoVideoUrl && (
+            <a
+              href={project.demoVideoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={project.demoVideoLabel ?? `Watch demo for ${project.title}`}
+              title={project.demoVideoLabel ?? `Watch demo for ${project.title}`}
+              className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border bg-background/50 text-foreground transition-colors hover:border-stardust hover:text-stardust"
+            >
+              <CirclePlay className="h-4 w-4" />
+            </a>
+          )}
           {project.sourceUrl && (
             <a
               href={project.sourceUrl}
