@@ -7,9 +7,6 @@ import { ProjectRow } from "@/components/ProjectRow";
 import { useReveal } from "@/hooks/use-reveal";
 
 const mailtoUrl = `mailto:${profile.email}?subject=${encodeURIComponent(profile.emailSubject)}`;
-const gmailComposeUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
-  profile.email,
-)}`;
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -197,60 +194,62 @@ function Portfolio() {
         </section>
 
         <section id="about" className="mx-auto max-w-6xl px-5 py-24 md:px-6">
+          <div className="divider-cosmic mb-10" />
           <div className="grid gap-8 md:grid-cols-[1fr_1.2fr] md:items-start">
             <div>
-              <p className="text-sm uppercase tracking-[0.28em] text-stardust">About</p>
-              <h2 className="mt-3 text-4xl font-bold text-foreground md:text-5xl">
-                Built for real teams and real users
+              <p className="font-mono text-xs tracking-[0.4em] uppercase text-stardust/55 mb-3">
+                About
+              </p>
+              <h2 className="text-4xl font-bold text-foreground md:text-5xl">
+                Built for real teams and{" "}
+                <em className="italic text-gradient-aurora">real users</em>
               </h2>
             </div>
-            <div className="space-y-6 text-base leading-8 text-muted-foreground">
-              <p>
-                I care about the full path from idea to production: shaping the interface, choosing
-                practical architecture, designing the data model, and leaving the codebase easier to
-                work in than I found it.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {profile.strengths.map((strength) => (
-                  <span
-                    key={strength}
-                    className="rounded-full border border-border bg-card/45 px-3 py-1 text-sm text-stardust"
-                  >
-                    {strength}
-                  </span>
-                ))}
+            <div className="relative border-l border-primary/25 pl-6">
+              <div className="absolute -left-px top-0 h-10 w-px bg-gradient-to-b from-stardust/70 to-transparent" />
+              <div className="space-y-6 text-base leading-[1.85] text-muted-foreground">
+                <p>
+                  I care about the full path from idea to production: shaping the interface,
+                  choosing practical architecture, designing the data model, and leaving the
+                  codebase easier to work in than I found it.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {profile.strengths.map((strength) => (
+                    <span
+                      key={strength}
+                      className="rounded-full border border-primary/35 bg-card/45 px-3 py-1 text-sm text-stardust/80"
+                    >
+                      {strength}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        <section id="contact" className="mx-auto max-w-4xl px-5 py-24 text-center md:px-6">
-          <p className="text-sm uppercase tracking-[0.28em] text-stardust">Contact</p>
+        <section id="contact" className="relative mx-auto max-w-4xl overflow-hidden px-5 py-24 text-center md:px-6">
+          <div className="pointer-events-none absolute bottom-0 left-1/2 h-[200px] w-[400px] -translate-x-1/2 rounded-full bg-primary/20 blur-[60px]" />
+          <div className="pointer-events-none absolute left-[5%] top-[20%] h-px w-20 -rotate-[15deg] bg-gradient-to-r from-transparent via-stardust/50 to-transparent blur-[0.5px]" />
+
+          <p className="font-mono text-xs tracking-[0.45em] uppercase text-stardust/55 mb-3">
+            Contact
+          </p>
           <h2 className="mt-3 text-4xl font-bold text-foreground md:text-5xl">
-            Let&apos;s build something useful
+            Let&apos;s build something{" "}
+            <em className="italic text-gradient-aurora">useful.</em>
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-muted-foreground">
-            {profile.availability}. The fastest way to reach me is email, and you can also review my
-            GitHub or LinkedIn.
+            {profile.availability}. The fastest way to reach me is email.
           </p>
 
-          <div className="mt-9 flex flex-wrap justify-center gap-3">
-            <ResumeLink className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5" />
+          <div className="relative mt-9 flex flex-wrap justify-center gap-3">
             <a
               href={mailtoUrl}
-              className="inline-flex items-center gap-2 rounded-md border border-border bg-background/45 px-5 py-3 text-sm font-semibold text-foreground transition-colors hover:border-stardust hover:text-stardust"
+              className="inline-flex items-center gap-2 rounded-md border border-primary/50 bg-primary/25 px-5 py-3 text-sm font-semibold text-foreground shadow-glow transition-transform hover:-translate-y-0.5"
             >
               <Mail className="h-4 w-4" />
               Email me
-            </a>
-            <a
-              href={gmailComposeUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-md border border-border bg-background/45 px-5 py-3 text-sm font-semibold text-foreground transition-colors hover:border-stardust hover:text-stardust"
-            >
-              <Mail className="h-4 w-4" />
-              Open Gmail
             </a>
             <a
               href={profile.github}
@@ -275,8 +274,8 @@ function Portfolio() {
         </section>
       </main>
 
-      <footer className="border-t border-border/60 py-8 text-center text-sm text-muted-foreground">
-        <p>
+      <footer className="border-t border-primary/10 py-8 text-center">
+        <p className="font-mono text-xs text-foreground/20">
           {new Date().getFullYear()} {profile.name}. Built with React, TanStack, and Tailwind.
         </p>
       </footer>
