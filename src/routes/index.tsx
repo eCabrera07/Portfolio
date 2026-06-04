@@ -43,6 +43,10 @@ function ResumeLink({ className, variant = "default" }: { className: string; var
 
 function Portfolio() {
   const [openProjectIndex, setOpenProjectIndex] = useState<number | null>(null);
+  const projectsRef = useReveal<HTMLElement>();
+  const skillsRef = useReveal<HTMLElement>();
+  const aboutRef = useReveal<HTMLElement>();
+  const contactRef = useReveal<HTMLElement>();
   return (
     <div className="min-h-screen">
       <nav className="fixed inset-x-0 top-0 z-50 border-b border-primary/12 bg-background/60 backdrop-blur-2xl">
@@ -119,7 +123,11 @@ function Portfolio() {
           </div>
         </header>
 
-        <section id="projects" className="relative mx-auto max-w-6xl px-5 pb-24 pt-8 md:px-6">
+        <section
+          ref={projectsRef}
+          id="projects"
+          className="reveal-on-scroll relative mx-auto max-w-6xl px-5 pb-24 pt-8 md:px-6"
+        >
           <div className="divider-cosmic mb-10" />
           <div className="mb-10 flex flex-col justify-between gap-5 md:flex-row md:items-end">
             <div>
@@ -153,7 +161,10 @@ function Portfolio() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-6xl px-5 py-20 md:px-6">
+        <section
+          ref={skillsRef}
+          className="reveal-on-scroll mx-auto max-w-6xl px-5 py-20 md:px-6"
+        >
           <div className="divider-cosmic mb-10" />
           <div className="mb-8 flex flex-col justify-between gap-5 md:flex-row md:items-end">
             <div>
@@ -193,7 +204,11 @@ function Portfolio() {
           </div>
         </section>
 
-        <section id="about" className="mx-auto max-w-6xl px-5 py-24 md:px-6">
+        <section
+          ref={aboutRef}
+          id="about"
+          className="reveal-on-scroll mx-auto max-w-6xl px-5 py-24 md:px-6"
+        >
           <div className="divider-cosmic mb-10" />
           <div className="grid gap-8 md:grid-cols-[1fr_1.2fr] md:items-start">
             <div>
@@ -228,7 +243,11 @@ function Portfolio() {
           </div>
         </section>
 
-        <section id="contact" className="relative mx-auto max-w-4xl overflow-hidden px-5 py-24 text-center md:px-6">
+        <section
+          ref={contactRef}
+          id="contact"
+          className="reveal-on-scroll relative mx-auto max-w-4xl overflow-hidden px-5 py-24 text-center md:px-6"
+        >
           <div className="pointer-events-none absolute bottom-0 left-1/2 h-[200px] w-[400px] -translate-x-1/2 rounded-full bg-primary/20 blur-[60px]" />
           <div className="pointer-events-none absolute left-[5%] top-[20%] h-px w-20 -rotate-[15deg] bg-gradient-to-r from-transparent via-stardust/50 to-transparent blur-[0.5px]" />
 
