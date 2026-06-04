@@ -1,5 +1,5 @@
 // src/components/ProjectRow.tsx
-import { ArrowUpRight, CirclePlay, Github, Minus, Plus } from "lucide-react";
+import { ArrowUpRight, Github, Minus, Plus } from "lucide-react";
 import type { Project } from "@/data/projects";
 
 const NUMBER_OPACITIES = [0.3, 0.18, 0.12, 0.06];
@@ -73,11 +73,23 @@ export function ProjectRow({ project, index, isOpen, onToggle }: ProjectRowProps
       >
         <div className="overflow-hidden min-h-0">
           <div
-            className={`pb-6 pl-[52px] grid gap-6 md:grid-cols-2 transition-opacity duration-300 ${
+            className={`pb-6 pl-[52px] flex flex-col gap-6 transition-opacity duration-300 ${
               isOpen ? "opacity-100" : "opacity-0"
             }`}
             style={{ transitionDelay: isOpen ? "150ms" : "0ms" }}
           >
+            {/* Inline video player */}
+            {project.demoVideoUrl && (
+              <video
+                src={project.demoVideoUrl}
+                controls
+                preload="metadata"
+                className="w-full rounded-md border border-border/60 bg-background/35"
+                aria-label={`Demo video for ${project.title}`}
+              />
+            )}
+
+            <div className="grid gap-6 md:grid-cols-2">
             {/* Left: description, role, status */}
             <div>
               <p className="text-sm leading-[1.85] text-muted-foreground mb-4">
@@ -110,18 +122,6 @@ export function ProjectRow({ project, index, isOpen, onToggle }: ProjectRowProps
                 ))}
               </div>
               <div className="flex flex-wrap gap-3">
-                {project.demoVideoUrl && (
-                  <a
-                    href={project.demoVideoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`Watch demo for ${project.title}`}
-                    className="inline-flex h-9 items-center gap-2 rounded-md border border-border bg-background/50 px-3 text-sm font-semibold text-foreground transition-colors hover:border-stardust hover:text-stardust"
-                  >
-                    <CirclePlay className="h-4 w-4" />
-                    {project.demoVideoLabel ?? "Demo"}
-                  </a>
-                )}
                 {project.sourceUrl && (
                   <a
                     href={project.sourceUrl}
@@ -148,6 +148,7 @@ export function ProjectRow({ project, index, isOpen, onToggle }: ProjectRowProps
                 )}
               </div>
             </div>
+            </div>{/* end grid */}
           </div>
         </div>
       </div>
