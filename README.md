@@ -31,7 +31,7 @@ src/data/projects.ts
 To highlight a project, set:
 
 ```ts
-featured: true
+featured: true;
 ```
 
 Projects marked `featured: false` stay in the data file but do not render in the featured project section.

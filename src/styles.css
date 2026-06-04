@@ -174,11 +174,11 @@
       radial-gradient(1px 1px at 5% 45%, oklch(0.95 0.04 270 / 0.7), transparent),
       radial-gradient(1.5px 1.5px at 22% 90%, oklch(0.92 0.08 295 / 0.75), transparent),
       radial-gradient(1px 1px at 48% 55%, oklch(0.98 0.02 250 / 0.6), transparent),
-      radial-gradient(2px 2px at 63% 10%, oklch(0.90 0.1 220 / 0.8), transparent),
+      radial-gradient(2px 2px at 63% 10%, oklch(0.9 0.1 220 / 0.8), transparent),
       radial-gradient(1px 1px at 78% 62%, oklch(0.95 0.06 295 / 0.65), transparent),
       radial-gradient(1px 1px at 92% 78%, oklch(0.88 0.08 250 / 0.7), transparent),
       radial-gradient(1.5px 1.5px at 15% 72%, oklch(0.96 0.04 320 / 0.65), transparent),
-      radial-gradient(1px 1px at 37% 35%, oklch(0.90 0.1 250 / 0.6), transparent),
+      radial-gradient(1px 1px at 37% 35%, oklch(0.9 0.1 250 / 0.6), transparent),
       radial-gradient(1px 1px at 52% 88%, oklch(0.94 0.06 295 / 0.7), transparent),
       radial-gradient(2px 2px at 70% 50%, oklch(0.92 0.08 220 / 0.75), transparent);
     background-size:
@@ -429,29 +429,31 @@
   }
   .badge-purple {
     background-color: oklch(0.72 0.22 295 / 0.15);
-    border-color: oklch(0.72 0.22 295 / 0.30);
+    border-color: oklch(0.72 0.22 295 / 0.3);
     color: oklch(0.92 0.05 295);
   }
   .badge-blue {
     background-color: oklch(0.68 0.2 220 / 0.15);
-    border-color: oklch(0.68 0.2 220 / 0.30);
-    color: oklch(0.90 0.05 220);
+    border-color: oklch(0.68 0.2 220 / 0.3);
+    color: oklch(0.9 0.05 220);
   }
   .badge-green {
     background-color: oklch(0.65 0.18 160 / 0.15);
-    border-color: oklch(0.65 0.18 160 / 0.30);
+    border-color: oklch(0.65 0.18 160 / 0.3);
     color: oklch(0.85 0.12 160);
   }
   .badge-orange {
     background-color: oklch(0.72 0.2 55 / 0.15);
-    border-color: oklch(0.72 0.2 55 / 0.30);
+    border-color: oklch(0.72 0.2 55 / 0.3);
     color: oklch(0.88 0.14 55);
   }
 
   .reveal-on-scroll {
     opacity: 0;
     transform: translateY(1rem);
-    transition: opacity 500ms ease-out, transform 500ms ease-out;
+    transition:
+      opacity 500ms ease-out,
+      transform 500ms ease-out;
   }
   .reveal-on-scroll.is-revealed {
     opacity: 1;

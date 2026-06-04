@@ -12,14 +12,14 @@
 
 ## File Map
 
-| File | Status | Responsibility |
-|---|---|---|
-| `src/data/projects.ts` | Modify | Add `navLogo`, `headlineLine1`, `headlineAccent` to profile; update `skillGroups` shape |
-| `src/styles.css` | Modify | Background, stars, nebula, keyframes, badge utilities, divider, reveal animations, aurora streaks |
-| `src/hooks/use-reveal.ts` | Create | IntersectionObserver hook for scroll-reveal |
-| `src/components/ProjectRow.tsx` | Create | Accordion row component replacing ProjectCard |
-| `src/routes/index.tsx` | Modify | All section markup: nav, hero, projects, skills, about, contact, footer |
-| `src/components/ProjectCard.tsx` | Delete | Replaced by ProjectRow |
+| File                             | Status | Responsibility                                                                                    |
+| -------------------------------- | ------ | ------------------------------------------------------------------------------------------------- |
+| `src/data/projects.ts`           | Modify | Add `navLogo`, `headlineLine1`, `headlineAccent` to profile; update `skillGroups` shape           |
+| `src/styles.css`                 | Modify | Background, stars, nebula, keyframes, badge utilities, divider, reveal animations, aurora streaks |
+| `src/hooks/use-reveal.ts`        | Create | IntersectionObserver hook for scroll-reveal                                                       |
+| `src/components/ProjectRow.tsx`  | Create | Accordion row component replacing ProjectCard                                                     |
+| `src/routes/index.tsx`           | Modify | All section markup: nav, hero, projects, skills, about, contact, footer                           |
+| `src/components/ProjectCard.tsx` | Delete | Replaced by ProjectRow                                                                            |
 
 ---
 
@@ -38,6 +38,7 @@ Expected: `Switched to a new branch 'visual-rework'`
 ## Task 1: Update data shapes in projects.ts
 
 **Files:**
+
 - Modify: `src/data/projects.ts`
 
 - [ ] **Add SkillGroup interface above the projects array**
@@ -112,15 +113,19 @@ git commit -m "feat: update profile data shapes for visual rework"
 ## Task 2: CSS — foundations (background, stars, nebula, animations)
 
 **Files:**
+
 - Modify: `src/styles.css`
 
 - [ ] **Deepen the background color**
 
 In `:root`, change:
+
 ```css
 --background: oklch(0.13 0.04 270);
 ```
+
 to:
+
 ```css
 --background: oklch(0.11 0.045 270);
 ```
@@ -160,8 +165,10 @@ radial-gradient(2px 2px at 70% 50%, oklch(0.92 0.08 220 / 0.75), transparent);
 - [ ] **Strengthen body::after nebula**
 
 In `body::after`:
+
 1. Change `opacity: 0.55` to `opacity: 0.7`
 2. Add a fourth radial gradient to `background-image`:
+
 ```css
 radial-gradient(ellipse at 70% 20%, oklch(0.38 0.18 295 / 0.45), transparent 40%),
 ```
@@ -187,6 +194,7 @@ In `@layer utilities`, add:
 ```
 
 Also add to the `prefers-reduced-motion` block:
+
 ```css
 .animate-nebula-pulse {
   animation: none !important;
@@ -248,6 +256,7 @@ git commit -m "feat: strengthen space atmosphere — denser stars, nebula, auror
 ## Task 3: CSS — utilities (badges, divider, gradient text, reveal animations)
 
 **Files:**
+
 - Modify: `src/styles.css`
 
 - [ ] **Add text-gradient-aurora utility**
@@ -298,22 +307,22 @@ In `@layer utilities`, add:
 }
 .badge-purple {
   background-color: oklch(0.72 0.22 295 / 0.15);
-  border-color: oklch(0.72 0.22 295 / 0.30);
+  border-color: oklch(0.72 0.22 295 / 0.3);
   color: oklch(0.92 0.05 295);
 }
 .badge-blue {
   background-color: oklch(0.68 0.2 220 / 0.15);
-  border-color: oklch(0.68 0.2 220 / 0.30);
-  color: oklch(0.90 0.05 220);
+  border-color: oklch(0.68 0.2 220 / 0.3);
+  color: oklch(0.9 0.05 220);
 }
 .badge-green {
   background-color: oklch(0.65 0.18 160 / 0.15);
-  border-color: oklch(0.65 0.18 160 / 0.30);
+  border-color: oklch(0.65 0.18 160 / 0.3);
   color: oklch(0.85 0.12 160);
 }
 .badge-orange {
   background-color: oklch(0.72 0.2 55 / 0.15);
-  border-color: oklch(0.72 0.2 55 / 0.30);
+  border-color: oklch(0.72 0.2 55 / 0.3);
   color: oklch(0.88 0.14 55);
 }
 ```
@@ -326,7 +335,9 @@ In `@layer utilities`, add:
 .reveal-on-scroll {
   opacity: 0;
   transform: translateY(1rem);
-  transition: opacity 500ms ease-out, transform 500ms ease-out;
+  transition:
+    opacity 500ms ease-out,
+    transform 500ms ease-out;
 }
 .reveal-on-scroll.is-revealed {
   opacity: 1;
@@ -335,6 +346,7 @@ In `@layer utilities`, add:
 ```
 
 Also add to the `prefers-reduced-motion` block:
+
 ```css
 .reveal-on-scroll {
   opacity: 1 !important;
@@ -355,6 +367,7 @@ git commit -m "feat: add badge, divider-cosmic, text-gradient-aurora, reveal uti
 ## Task 4: Create useReveal hook
 
 **Files:**
+
 - Create: `src/hooks/use-reveal.ts`
 
 - [ ] **Create the hook**
@@ -406,6 +419,7 @@ git commit -m "feat: add useReveal hook for scroll-triggered fade-up"
 ## Task 5: Create ProjectRow component
 
 **Files:**
+
 - Create: `src/components/ProjectRow.tsx`
 
 - [ ] **Create the component**
@@ -497,12 +511,10 @@ export function ProjectRow({ project, index, isOpen, onToggle }: ProjectRowProps
                 {project.description}
               </p>
               <p className="text-sm text-muted-foreground mb-1">
-                <span className="text-foreground/90 font-medium">Role:</span>{" "}
-                {project.role}
+                <span className="text-foreground/90 font-medium">Role:</span> {project.role}
               </p>
               <p className="text-sm text-muted-foreground">
-                <span className="text-foreground/90 font-medium">Status:</span>{" "}
-                {project.status}
+                <span className="text-foreground/90 font-medium">Status:</span> {project.status}
               </p>
             </div>
 
@@ -591,11 +603,13 @@ git commit -m "feat: add ProjectRow accordion component"
 ## Task 6: Redesign navigation
 
 **Files:**
+
 - Modify: `src/routes/index.tsx`
 
 - [ ] **Update imports at the top of index.tsx**
 
 Add to the import list (keep all existing imports, add the new ones):
+
 ```tsx
 import { useState } from "react";
 import { ProjectRow } from "@/components/ProjectRow";
@@ -609,7 +623,13 @@ Remove `ProjectCard` import (line ~5) and `ArrowDown` from the lucide imports.
 Replace the entire `ResumeLink` function:
 
 ```tsx
-function ResumeLink({ className, variant = "default" }: { className: string; variant?: "default" | "pill" }) {
+function ResumeLink({
+  className,
+  variant = "default",
+}: {
+  className: string;
+  variant?: "default" | "pill";
+}) {
   const hasResumeUrl = Boolean(profile.resume.url);
   return (
     <a
@@ -681,6 +701,7 @@ git commit -m "feat: redesign nav — EJCL monospace logo, resume pill, increase
 ## Task 7: Redesign hero section
 
 **Files:**
+
 - Modify: `src/routes/index.tsx`
 
 - [ ] **Add useState for open project index at the top of Portfolio()**
@@ -738,9 +759,7 @@ Replace the `<header id="top" ...>` element through its closing `</header>`:
         Email me
       </a>
     </div>
-    <p className="font-mono text-[10px] tracking-[0.25em] text-foreground/15 mt-6">
-      ↓ scroll
-    </p>
+    <p className="font-mono text-[10px] tracking-[0.25em] text-foreground/15 mt-6">↓ scroll</p>
   </div>
 </header>
 ```
@@ -761,6 +780,7 @@ git commit -m "feat: redesign hero — full viewport, gradient headline, nebula 
 ## Task 8: Redesign projects section
 
 **Files:**
+
 - Modify: `src/routes/index.tsx`
 
 - [ ] **Replace the projects section**
@@ -776,8 +796,7 @@ Replace the `<section id="projects" ...>` block:
         Selected work
       </p>
       <h2 className="text-4xl font-bold text-foreground md:text-5xl">
-        Selected Engineering{" "}
-        <em className="italic text-gradient-aurora">Work</em>
+        Selected Engineering <em className="italic text-gradient-aurora">Work</em>
       </h2>
     </div>
     <p className="max-w-xl text-sm leading-6 text-muted-foreground">
@@ -793,9 +812,7 @@ Replace the `<section id="projects" ...>` block:
         project={project}
         index={index}
         isOpen={openProjectIndex === index}
-        onToggle={() =>
-          setOpenProjectIndex(openProjectIndex === index ? null : index)
-        }
+        onToggle={() => setOpenProjectIndex(openProjectIndex === index ? null : index)}
       />
     ))}
     <div className="divider-cosmic" />
@@ -819,6 +836,7 @@ git commit -m "feat: replace project grid with numbered accordion rows"
 ## Task 9: Redesign skills section
 
 **Files:**
+
 - Modify: `src/routes/index.tsx`
 
 - [ ] **Replace the skills section**
@@ -830,17 +848,14 @@ Replace the `<section className="mx-auto max-w-6xl px-5 py-20 ...">` skills bloc
   <div className="divider-cosmic mb-10" />
   <div className="mb-8 flex flex-col justify-between gap-5 md:flex-row md:items-end">
     <div>
-      <p className="font-mono text-xs tracking-[0.4em] uppercase text-stardust/55 mb-3">
-        Toolbox
-      </p>
+      <p className="font-mono text-xs tracking-[0.4em] uppercase text-stardust/55 mb-3">Toolbox</p>
       <h2 className="text-4xl font-bold text-foreground md:text-5xl">
-        Skills recruiters can{" "}
-        <em className="italic text-gradient-aurora">scan quickly</em>
+        Skills recruiters can <em className="italic text-gradient-aurora">scan quickly</em>
       </h2>
     </div>
     <p className="max-w-xl text-sm leading-6 text-muted-foreground">
-      The portfolio leans into the same stack areas I want hiring teams to remember:
-      practical frontend work, API-backed products, database design, and mobile execution.
+      The portfolio leans into the same stack areas I want hiring teams to remember: practical
+      frontend work, API-backed products, database design, and mobile execution.
     </p>
   </div>
 
@@ -883,6 +898,7 @@ git commit -m "feat: redesign skills section — badge clusters with category ti
 ## Task 10: Redesign about, contact, and footer
 
 **Files:**
+
 - Modify: `src/routes/index.tsx`
 
 - [ ] **Replace the about section**
@@ -894,21 +910,18 @@ Replace the `<section id="about" ...>` block:
   <div className="divider-cosmic mb-10" />
   <div className="grid gap-8 md:grid-cols-[1fr_1.2fr] md:items-start">
     <div>
-      <p className="font-mono text-xs tracking-[0.4em] uppercase text-stardust/55 mb-3">
-        About
-      </p>
+      <p className="font-mono text-xs tracking-[0.4em] uppercase text-stardust/55 mb-3">About</p>
       <h2 className="text-4xl font-bold text-foreground md:text-5xl">
-        Built for real teams and{" "}
-        <em className="italic text-gradient-aurora">real users</em>
+        Built for real teams and <em className="italic text-gradient-aurora">real users</em>
       </h2>
     </div>
     <div className="relative border-l border-primary/25 pl-6">
       <div className="absolute -left-px top-0 h-10 w-px bg-gradient-to-b from-stardust/70 to-transparent" />
       <div className="space-y-6 text-base leading-[1.85] text-muted-foreground">
         <p>
-          I care about the full path from idea to production: shaping the interface,
-          choosing practical architecture, designing the data model, and leaving the
-          codebase easier to work in than I found it.
+          I care about the full path from idea to production: shaping the interface, choosing
+          practical architecture, designing the data model, and leaving the codebase easier to work
+          in than I found it.
         </p>
         <div className="flex flex-wrap gap-2">
           {profile.strengths.map((strength) => (
@@ -931,16 +944,16 @@ Replace the `<section id="about" ...>` block:
 Replace the `<section id="contact" ...>` block:
 
 ```tsx
-<section id="contact" className="relative mx-auto max-w-4xl overflow-hidden px-5 py-24 text-center md:px-6">
+<section
+  id="contact"
+  className="relative mx-auto max-w-4xl overflow-hidden px-5 py-24 text-center md:px-6"
+>
   <div className="pointer-events-none absolute bottom-0 left-1/2 h-[200px] w-[400px] -translate-x-1/2 rounded-full bg-primary/20 blur-[60px]" />
   <div className="pointer-events-none absolute left-[5%] top-[20%] h-px w-20 -rotate-[15deg] bg-gradient-to-r from-transparent via-stardust/50 to-transparent blur-[0.5px]" />
 
-  <p className="font-mono text-xs tracking-[0.45em] uppercase text-stardust/55 mb-3">
-    Contact
-  </p>
+  <p className="font-mono text-xs tracking-[0.45em] uppercase text-stardust/55 mb-3">Contact</p>
   <h2 className="mt-3 text-4xl font-bold text-foreground md:text-5xl">
-    Let&apos;s build something{" "}
-    <em className="italic text-gradient-aurora">useful.</em>
+    Let&apos;s build something <em className="italic text-gradient-aurora">useful.</em>
   </h2>
   <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-muted-foreground">
     {profile.availability}. The fastest way to reach me is email.
@@ -1015,6 +1028,7 @@ git commit -m "feat: redesign about, contact, footer — gradient headings, glow
 ## Task 11: Wire up scroll-reveal animations
 
 **Files:**
+
 - Modify: `src/routes/index.tsx`
 
 - [ ] **Add reveal refs to Portfolio function**
@@ -1077,6 +1091,7 @@ git commit -m "feat: add scroll-reveal fade-up animations to all sections"
 ## Task 12: Cleanup — delete ProjectCard
 
 **Files:**
+
 - Delete: `src/components/ProjectCard.tsx`
 
 - [ ] **Remove the ProjectCard file**
