@@ -35,7 +35,9 @@ Use the existing badge color system. If no new color is needed, reuse an existin
 
 ## Resume Handling
 
-The pasted resume excerpt is enough for this change. If the full resume is provided later, use it to refine top-of-portfolio copy, especially the hero bio and About section, but do not include that broader resume extraction in this implementation.
+The pasted resume excerpt is the source content for this change. Do not request or depend on the full resume for this implementation.
+
+The highlighted content should be represented only through the concise `AI Tools` row for now. Broader top-of-portfolio copy changes are out of scope unless requested separately.
 
 ## Testing
 
