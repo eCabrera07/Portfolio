@@ -43,22 +43,6 @@ function ResumeLink({ className, variant = "default" }: { className: string; var
   );
 }
 
-function ProjectRowList() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-  return (
-    <div>
-      {featuredProjects.map((project, index) => (
-        <ProjectRow
-          key={project.title}
-          project={project}
-          index={index}
-          isOpen={openIndex === index}
-          onToggle={() => setOpenIndex(openIndex === index ? null : index)}
-        />
-      ))}
-    </div>
-  );
-}
 
 function Portfolio() {
   const [openProjectIndex, setOpenProjectIndex] = useState<number | null>(null);
@@ -139,11 +123,15 @@ function Portfolio() {
         </header>
 
         <section id="projects" className="relative mx-auto max-w-6xl px-5 pb-24 pt-8 md:px-6">
+          <div className="divider-cosmic mb-10" />
           <div className="mb-10 flex flex-col justify-between gap-5 md:flex-row md:items-end">
             <div>
-              <p className="text-sm uppercase tracking-[0.28em] text-stardust">Selected work</p>
-              <h2 className="mt-3 text-4xl font-bold text-foreground md:text-5xl">
-                Selected Engineering Work
+              <p className="font-mono text-xs tracking-[0.4em] uppercase text-stardust/55 mb-3">
+                Selected work
+              </p>
+              <h2 className="text-4xl font-bold text-foreground md:text-5xl">
+                Selected Engineering{" "}
+                <em className="italic text-gradient-aurora">Work</em>
               </h2>
             </div>
             <p className="max-w-xl text-sm leading-6 text-muted-foreground">
@@ -152,7 +140,20 @@ function Portfolio() {
             </p>
           </div>
 
-          <ProjectRowList />
+          <div className="flex flex-col">
+            {featuredProjects.map((project, index) => (
+              <ProjectRow
+                key={project.title}
+                project={project}
+                index={index}
+                isOpen={openProjectIndex === index}
+                onToggle={() =>
+                  setOpenProjectIndex(openProjectIndex === index ? null : index)
+                }
+              />
+            ))}
+            <div className="divider-cosmic" />
+          </div>
         </section>
 
         <section className="mx-auto max-w-6xl px-5 py-20 md:px-6">
