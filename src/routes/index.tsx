@@ -56,11 +56,11 @@ function Portfolio() {
     <div className="min-h-screen">
       <nav className="fixed inset-x-0 top-0 z-50 border-b border-primary/12 bg-background/60 backdrop-blur-2xl">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 md:px-6">
-          <a href="#top" className="font-mono text-sm font-bold tracking-[0.3em] text-foreground">
+          <a href="#top" className="text-sm font-bold tracking-[0.3em] text-foreground">
             {profile.navLogo}
           </a>
           <div className="flex items-center gap-5 md:gap-6">
-            <div className="flex gap-5 font-mono text-xs tracking-[0.12em] text-muted-foreground md:gap-7">
+            <div className="flex gap-5 text-xs tracking-[0.12em] text-muted-foreground md:gap-7">
               <a href="#projects" className="transition-colors hover:text-foreground">
                 Work
               </a>
@@ -73,7 +73,7 @@ function Portfolio() {
             </div>
             <ResumeLink
               variant="pill"
-              className="inline-flex items-center gap-1.5 rounded border border-primary/40 bg-primary/20 px-3 py-1.5 font-mono text-xs font-semibold text-primary transition-shadow hover:shadow-glow"
+              className="inline-flex items-center gap-1.5 rounded border border-primary/40 bg-primary/20 px-3 py-1.5 text-xs font-semibold text-primary transition-shadow hover:shadow-glow"
             />
           </div>
         </div>
