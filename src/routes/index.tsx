@@ -93,11 +93,11 @@ function Portfolio() {
             <p className="font-mono text-xs tracking-[0.45em] uppercase text-stardust/60 mb-5">
               {profile.title} at {profile.company}
             </p>
-            <h1 className="max-w-4xl text-5xl font-bold leading-[1.1] text-foreground sm:text-6xl md:text-7xl">
+            <h1 className="max-w-4xl text-5xl font-bold leading-[1.1] text-foreground sm:text-6xl md:text-7xl mb-6">
               {profile.headlineLine1}
-            </h1>
-            <h1 className="max-w-4xl text-5xl font-bold leading-[1.1] italic text-gradient-aurora sm:text-6xl md:text-7xl mb-6">
-              {profile.headlineAccent}
+              <span className="block italic text-gradient-aurora">
+                {profile.headlineAccent}
+              </span>
             </h1>
             <p className="max-w-xl text-base leading-[1.85] text-muted-foreground mb-8 md:text-lg">
               {profile.bio}
@@ -186,8 +186,7 @@ function Portfolio() {
             {profile.skillGroups.map((group, i) => (
               <div
                 key={group.label}
-                className="flex items-baseline gap-4 flex-wrap reveal-on-scroll"
-                style={{ transitionDelay: `${i * 60}ms` }}
+                className="flex items-baseline gap-4 flex-wrap"
               >
                 <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-stardust/55 min-w-[72px]">
                   {group.label}
