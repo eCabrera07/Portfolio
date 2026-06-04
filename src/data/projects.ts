@@ -16,6 +16,12 @@ export interface Project {
   sourceLabel?: string;
 }
 
+export interface SkillGroup {
+  label: string;
+  color: "purple" | "blue" | "green" | "orange";
+  items: string[];
+}
+
 const configuredResumeUrl = import.meta.env.VITE_RESUME_URL?.trim();
 
 export const projects: Project[] = [
@@ -87,6 +93,9 @@ export const featuredProjects = projects.filter((project) => project.featured);
 export const profile = {
   name: "Eddie Cabrera",
   shortName: "Eddie",
+  navLogo: "EJCL",
+  headlineLine1: "Full-stack engineer focused on",
+  headlineAccent: "database-backed applications.",
   title: "Level 2 Software Engineer",
   company: "AptimaPR",
   headline: "Full-stack software engineer focused on database-backed applications.",
@@ -107,19 +116,23 @@ export const profile = {
   skillGroups: [
     {
       label: "Frontend",
-      value: "React, TypeScript, TanStack, Tailwind",
+      color: "purple" as const,
+      items: ["React", "TypeScript", "TanStack", "Tailwind"],
     },
     {
       label: "Backend",
-      value: "FastAPI, APIs, service workflows",
+      color: "blue" as const,
+      items: ["FastAPI", "REST APIs", "Service workflows"],
     },
     {
       label: "Database",
-      value: "PostgreSQL, Redis, Room",
+      color: "green" as const,
+      items: ["PostgreSQL", "Redis", "Room"],
     },
     {
       label: "Mobile",
-      value: "Kotlin, Android, Jetpack Compose",
+      color: "orange" as const,
+      items: ["Kotlin", "Android", "Jetpack Compose"],
     },
   ],
   stats: [
