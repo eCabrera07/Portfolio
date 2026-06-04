@@ -136,6 +136,11 @@ export const profile = {
       color: "orange" as const,
       items: ["Kotlin", "Android", "Jetpack Compose"],
     },
+    {
+      label: "AI Tools",
+      color: "blue" as const,
+      items: ["Codex", "Claude Code", "Prompt Engineering"],
+    },
   ],
   stats: [
     { label: "Frontend", value: "React + TypeScript" },
