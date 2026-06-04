@@ -277,6 +277,12 @@
     .animate-nebula-pulse {
       animation: none !important;
     }
+
+    .reveal-on-scroll {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
   }
 }
 
@@ -390,5 +396,65 @@
     to {
       transform: translate3d(3rem, 8rem, 0) scale(1.08);
     }
+  }
+
+  .text-gradient-aurora {
+    background: var(--gradient-aurora);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .divider-cosmic {
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      oklch(0.72 0.22 295 / 0.3),
+      oklch(0.68 0.2 220 / 0.2),
+      transparent
+    );
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 0.375rem;
+    padding: 0.25rem 0.625rem;
+    font-size: 0.8125rem;
+    line-height: 1;
+    border-width: 1px;
+    border-style: solid;
+    font-weight: 500;
+  }
+  .badge-purple {
+    background-color: oklch(0.72 0.22 295 / 0.15);
+    border-color: oklch(0.72 0.22 295 / 0.30);
+    color: oklch(0.92 0.05 295);
+  }
+  .badge-blue {
+    background-color: oklch(0.68 0.2 220 / 0.15);
+    border-color: oklch(0.68 0.2 220 / 0.30);
+    color: oklch(0.90 0.05 220);
+  }
+  .badge-green {
+    background-color: oklch(0.65 0.18 160 / 0.15);
+    border-color: oklch(0.65 0.18 160 / 0.30);
+    color: oklch(0.85 0.12 160);
+  }
+  .badge-orange {
+    background-color: oklch(0.72 0.2 55 / 0.15);
+    border-color: oklch(0.72 0.2 55 / 0.30);
+    color: oklch(0.88 0.14 55);
+  }
+
+  .reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(1rem);
+    transition: opacity 500ms ease-out, transform 500ms ease-out;
+  }
+  .reveal-on-scroll.is-revealed {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
