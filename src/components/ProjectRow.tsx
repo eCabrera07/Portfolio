@@ -84,12 +84,10 @@ export function ProjectRow({ project, index, isOpen, onToggle }: ProjectRowProps
                 {project.description}
               </p>
               <p className="text-sm text-muted-foreground mb-1">
-                <span className="text-foreground/90 font-medium">Role:</span>{" "}
-                {project.role}
+                <span className="text-foreground/90 font-medium">Role:</span> {project.role}
               </p>
               <p className="text-sm text-muted-foreground">
-                <span className="text-foreground/90 font-medium">Status:</span>{" "}
-                {project.status}
+                <span className="text-foreground/90 font-medium">Status:</span> {project.status}
               </p>
             </div>
 

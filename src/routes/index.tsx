@@ -20,7 +20,13 @@ export const Route = createFileRoute("/")({
   component: Portfolio,
 });
 
-function ResumeLink({ className, variant = "default" }: { className: string; variant?: "default" | "pill" }) {
+function ResumeLink({
+  className,
+  variant = "default",
+}: {
+  className: string;
+  variant?: "default" | "pill";
+}) {
   const hasResumeUrl = Boolean(profile.resume.url);
   return (
     <a
@@ -39,7 +45,6 @@ function ResumeLink({ className, variant = "default" }: { className: string; var
     </a>
   );
 }
-
 
 function Portfolio() {
   const [openProjectIndex, setOpenProjectIndex] = useState<number | null>(null);
@@ -95,9 +100,7 @@ function Portfolio() {
             </p>
             <h1 className="max-w-4xl text-5xl font-bold leading-[1.1] text-foreground sm:text-6xl md:text-7xl mb-6">
               {profile.headlineLine1}
-              <span className="block italic text-gradient-aurora">
-                {profile.headlineAccent}
-              </span>
+              <span className="block italic text-gradient-aurora">{profile.headlineAccent}</span>
             </h1>
             <p className="max-w-xl text-base leading-[1.85] text-muted-foreground mb-8 md:text-lg">
               {profile.bio}
@@ -135,8 +138,7 @@ function Portfolio() {
                 Selected work
               </p>
               <h2 className="text-4xl font-bold text-foreground md:text-5xl">
-                Selected Engineering{" "}
-                <em className="italic text-gradient-aurora">Work</em>
+                Selected Engineering <em className="italic text-gradient-aurora">Work</em>
               </h2>
             </div>
             <p className="max-w-xl text-sm leading-6 text-muted-foreground">
@@ -152,19 +154,14 @@ function Portfolio() {
                 project={project}
                 index={index}
                 isOpen={openProjectIndex === index}
-                onToggle={() =>
-                  setOpenProjectIndex(openProjectIndex === index ? null : index)
-                }
+                onToggle={() => setOpenProjectIndex(openProjectIndex === index ? null : index)}
               />
             ))}
             <div className="divider-cosmic" />
           </div>
         </section>
 
-        <section
-          ref={skillsRef}
-          className="reveal-on-scroll mx-auto max-w-6xl px-5 py-20 md:px-6"
-        >
+        <section ref={skillsRef} className="reveal-on-scroll mx-auto max-w-6xl px-5 py-20 md:px-6">
           <div className="divider-cosmic mb-10" />
           <div className="mb-8 flex flex-col justify-between gap-5 md:flex-row md:items-end">
             <div>
@@ -172,8 +169,7 @@ function Portfolio() {
                 Toolbox
               </p>
               <h2 className="text-4xl font-bold text-foreground md:text-5xl">
-                Skills recruiters can{" "}
-                <em className="italic text-gradient-aurora">scan quickly</em>
+                Skills recruiters can <em className="italic text-gradient-aurora">scan quickly</em>
               </h2>
             </div>
             <p className="max-w-xl text-sm leading-6 text-muted-foreground">
@@ -184,10 +180,7 @@ function Portfolio() {
 
           <div className="flex flex-col gap-4">
             {profile.skillGroups.map((group, i) => (
-              <div
-                key={group.label}
-                className="flex items-baseline gap-4 flex-wrap"
-              >
+              <div key={group.label} className="flex items-baseline gap-4 flex-wrap">
                 <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-stardust/55 min-w-[72px]">
                   {group.label}
                 </span>
@@ -215,8 +208,7 @@ function Portfolio() {
                 About
               </p>
               <h2 className="text-4xl font-bold text-foreground md:text-5xl">
-                Built for real teams and{" "}
-                <em className="italic text-gradient-aurora">real users</em>
+                Built for real teams and <em className="italic text-gradient-aurora">real users</em>
               </h2>
             </div>
             <div className="relative border-l border-primary/25 pl-6">
@@ -254,8 +246,7 @@ function Portfolio() {
             Contact
           </p>
           <h2 className="mt-3 text-4xl font-bold text-foreground md:text-5xl">
-            Let&apos;s build something{" "}
-            <em className="italic text-gradient-aurora">useful.</em>
+            Let&apos;s build something <em className="italic text-gradient-aurora">useful.</em>
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-muted-foreground">
             {profile.availability}. The fastest way to reach me is email.
