@@ -157,11 +157,15 @@ function Portfolio() {
         </section>
 
         <section className="mx-auto max-w-6xl px-5 py-20 md:px-6">
+          <div className="divider-cosmic mb-10" />
           <div className="mb-8 flex flex-col justify-between gap-5 md:flex-row md:items-end">
             <div>
-              <p className="text-sm uppercase tracking-[0.28em] text-stardust">Toolbox</p>
-              <h2 className="mt-3 text-4xl font-bold text-foreground md:text-5xl">
-                Skills recruiters can scan quickly
+              <p className="font-mono text-xs tracking-[0.4em] uppercase text-stardust/55 mb-3">
+                Toolbox
+              </p>
+              <h2 className="text-4xl font-bold text-foreground md:text-5xl">
+                Skills recruiters can{" "}
+                <em className="italic text-gradient-aurora">scan quickly</em>
               </h2>
             </div>
             <p className="max-w-xl text-sm leading-6 text-muted-foreground">
@@ -170,18 +174,23 @@ function Portfolio() {
             </p>
           </div>
 
-          <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-4">
-            {profile.skillGroups.map((skill) => (
+          <div className="flex flex-col gap-4">
+            {profile.skillGroups.map((group, i) => (
               <div
-                key={skill.label}
-                className="rounded-lg border border-border/65 bg-card/40 p-4 backdrop-blur"
+                key={group.label}
+                className="flex items-baseline gap-4 flex-wrap reveal-on-scroll"
+                style={{ transitionDelay: `${i * 60}ms` }}
               >
-                <p className="text-xs uppercase tracking-[0.22em] text-muted-foreground">
-                  {skill.label}
-                </p>
-                <p className="mt-2 text-sm font-semibold leading-6 text-foreground">
-                  {skill.value}
-                </p>
+                <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-stardust/55 min-w-[72px]">
+                  {group.label}
+                </span>
+                <div className="flex gap-2 flex-wrap">
+                  {group.items.map((item) => (
+                    <span key={item} className={`badge badge-${group.color}`}>
+                      {item}
+                    </span>
+                  ))}
+                </div>
               </div>
             ))}
           </div>
