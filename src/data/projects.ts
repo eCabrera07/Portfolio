@@ -22,6 +22,8 @@ export interface SkillGroup {
   items: string[];
 }
 
+const defaultResumeUrl =
+  "https://drive.google.com/file/d/1fMWTyblPtpo0pe_5GV8_WzJI-T-zmMk7/view?usp=sharing";
 const configuredResumeUrl = import.meta.env.VITE_RESUME_URL?.trim();
 
 export const projects: Project[] = [
@@ -106,7 +108,7 @@ export const profile = {
   email: "eddie.joel.7@gmail.com",
   emailSubject: "Portfolio inquiry",
   resume: {
-    url: configuredResumeUrl,
+    url: configuredResumeUrl || defaultResumeUrl,
     label: "Download resume",
     fallbackLabel: "Request resume",
   },
