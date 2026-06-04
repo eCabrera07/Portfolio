@@ -1,8 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowDown, ArrowUpRight, Download, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowUpRight, Download, Github, Linkedin, Mail } from "lucide-react";
 import heroImage from "@/assets/space-hero.jpg";
 import { featuredProjects, profile } from "@/data/projects";
-import { ProjectCard } from "@/components/ProjectCard";
+import { useState } from "react";
+import { ProjectRow } from "@/components/ProjectRow";
+import { useReveal } from "@/hooks/use-reveal";
 
 const mailtoUrl = `mailto:${profile.email}?subject=${encodeURIComponent(profile.emailSubject)}`;
 const gmailComposeUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
@@ -21,9 +23,8 @@ export const Route = createFileRoute("/")({
   component: Portfolio,
 });
 
-function ResumeLink({ className }: { className: string }) {
+function ResumeLink({ className, variant = "default" }: { className: string; variant?: "default" | "pill" }) {
   const hasResumeUrl = Boolean(profile.resume.url);
-
   return (
     <a
       href={profile.resume.url || mailtoUrl}
@@ -32,30 +33,57 @@ function ResumeLink({ className }: { className: string }) {
       aria-label={hasResumeUrl ? profile.resume.label : "Request resume by email"}
       className={className}
     >
-      <Download className="h-4 w-4" />
-      {hasResumeUrl ? profile.resume.label : profile.resume.fallbackLabel}
+      {variant === "default" && <Download className="h-4 w-4" />}
+      {variant === "pill"
+        ? "Resume"
+        : hasResumeUrl
+          ? profile.resume.label
+          : profile.resume.fallbackLabel}
     </a>
+  );
+}
+
+function ProjectRowList() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  return (
+    <div>
+      {featuredProjects.map((project, index) => (
+        <ProjectRow
+          key={project.title}
+          project={project}
+          index={index}
+          isOpen={openIndex === index}
+          onToggle={() => setOpenIndex(openIndex === index ? null : index)}
+        />
+      ))}
+    </div>
   );
 }
 
 function Portfolio() {
   return (
     <div className="min-h-screen">
-      <nav className="fixed inset-x-0 top-0 z-50 border-b border-border/35 bg-background/45 backdrop-blur-xl">
+      <nav className="fixed inset-x-0 top-0 z-50 border-b border-primary/12 bg-background/60 backdrop-blur-2xl">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 md:px-6">
-          <a href="#top" className="font-semibold tracking-tight text-foreground">
-            {profile.shortName}
+          <a href="#top" className="font-mono text-sm font-bold tracking-[0.3em] text-foreground">
+            {profile.navLogo}
           </a>
-          <div className="flex gap-5 text-sm text-muted-foreground md:gap-7">
-            <a href="#projects" className="transition-colors hover:text-foreground">
-              Work
-            </a>
-            <a href="#about" className="transition-colors hover:text-foreground">
-              About
-            </a>
-            <a href="#contact" className="transition-colors hover:text-foreground">
-              Contact
-            </a>
+          <div className="flex items-center gap-5 md:gap-6">
+            <div className="flex gap-5 font-mono text-xs tracking-[0.12em] text-muted-foreground md:gap-7">
+              <a href="#projects" className="transition-colors hover:text-foreground">
+                Work
+              </a>
+              <a href="#about" className="transition-colors hover:text-foreground">
+                About
+              </a>
+              <a href="#contact" className="transition-colors hover:text-foreground">
+                Contact
+              </a>
+            </div>
+            <ResumeLink
+              variant="pill"
+              className="inline-flex items-center gap-1.5 rounded border border-primary/40 bg-primary/20 px-3 py-1.5 font-mono text-xs font-semibold text-primary transition-shadow hover:shadow-glow"
+            />
           </div>
         </div>
       </nav>
@@ -92,7 +120,7 @@ function Portfolio() {
                   className="inline-flex items-center gap-2 rounded-md border border-border bg-background/45 px-5 py-3 text-sm font-semibold text-foreground backdrop-blur transition-colors hover:border-stardust hover:text-stardust"
                 >
                   View work
-                  <ArrowDown className="h-4 w-4" />
+                  <ArrowUpRight className="h-4 w-4" />
                 </a>
                 <a
                   href={mailtoUrl}
@@ -134,11 +162,7 @@ function Portfolio() {
             </p>
           </div>
 
-          <div className="grid gap-5 lg:grid-cols-3">
-            {featuredProjects.map((project, index) => (
-              <ProjectCard key={project.title} project={project} index={index} />
-            ))}
-          </div>
+          <ProjectRowList />
         </section>
 
         <section className="mx-auto max-w-6xl px-5 py-20 md:px-6">
