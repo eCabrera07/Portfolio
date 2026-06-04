@@ -61,6 +61,7 @@ function ProjectRowList() {
 }
 
 function Portfolio() {
+  const [openProjectIndex, setOpenProjectIndex] = useState<number | null>(null);
   return (
     <div className="min-h-screen">
       <nav className="fixed inset-x-0 top-0 z-50 border-b border-primary/12 bg-background/60 backdrop-blur-2xl">
@@ -89,62 +90,51 @@ function Portfolio() {
       </nav>
 
       <main id="content">
-        <header id="top" className="relative overflow-hidden">
+        <header id="top" className="relative min-h-screen overflow-hidden">
           <img
             src={heroImage}
             alt=""
             width={1920}
             height={1080}
-            className="absolute inset-x-0 top-0 h-[130%] w-full object-cover opacity-30 [mask-image:linear-gradient(to_bottom,black_0%,black_42%,transparent_100%)]"
+            className="absolute inset-x-0 top-0 h-[130%] w-full object-cover opacity-20 [mask-image:linear-gradient(to_bottom,black_0%,black_42%,transparent_100%)]"
           />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_10%,oklch(0.36_0.14_260_/_0.28),transparent_58%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_10%,oklch(0.36_0.14_260_/_0.35),transparent_58%)]" />
           <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-b from-transparent via-background/75 to-background" />
 
-          <div className="relative mx-auto max-w-6xl px-5 pb-16 pt-24 md:px-6 md:pb-20 md:pt-32">
-            <div className="max-w-5xl">
-              <p className="mb-5 text-sm uppercase tracking-[0.28em] text-stardust">
-                {profile.title} at {profile.company}
-              </p>
-              <h1 className="max-w-4xl text-4xl font-bold leading-tight text-foreground sm:text-5xl md:text-6xl">
-                {profile.headline}
-              </h1>
-              <p className="mt-5 max-w-2xl text-base leading-7 text-muted-foreground md:text-lg md:leading-8">
-                {profile.bio} I like the parts of software where product behavior, API contracts,
-                and data models all have to line up.
-              </p>
+          {/* Animated nebula pulse blob */}
+          <div className="pointer-events-none absolute left-1/2 top-1/2 h-[300px] w-[500px] -translate-x-1/2 -translate-y-[60%] rounded-full bg-primary/20 blur-[80px] animate-nebula-pulse" />
 
-              <div className="mt-8 flex flex-wrap gap-3">
-                <ResumeLink className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-glow transition-transform hover:-translate-y-0.5" />
-                <a
-                  href="#projects"
-                  className="inline-flex items-center gap-2 rounded-md border border-border bg-background/45 px-5 py-3 text-sm font-semibold text-foreground backdrop-blur transition-colors hover:border-stardust hover:text-stardust"
-                >
-                  View work
-                  <ArrowUpRight className="h-4 w-4" />
-                </a>
-                <a
-                  href={mailtoUrl}
-                  className="inline-flex items-center gap-2 rounded-md border border-border bg-background/45 px-5 py-3 text-sm font-semibold text-foreground backdrop-blur transition-colors hover:border-stardust hover:text-stardust"
-                >
-                  <Mail className="h-4 w-4" />
-                  Email me
-                </a>
-              </div>
+          <div className="relative flex min-h-screen flex-col items-center justify-center px-5 pb-10 pt-20 text-center md:px-6">
+            <p className="font-mono text-xs tracking-[0.45em] uppercase text-stardust/60 mb-5">
+              {profile.title} at {profile.company}
+            </p>
+            <h1 className="max-w-4xl text-5xl font-bold leading-[1.1] text-foreground sm:text-6xl md:text-7xl">
+              {profile.headlineLine1}
+            </h1>
+            <h1 className="max-w-4xl text-5xl font-bold leading-[1.1] italic text-gradient-aurora sm:text-6xl md:text-7xl mb-6">
+              {profile.headlineAccent}
+            </h1>
+            <p className="max-w-xl text-base leading-[1.85] text-muted-foreground mb-8 md:text-lg">
+              {profile.bio}
+            </p>
+            <div className="flex flex-wrap justify-center gap-3">
+              <a
+                href="#projects"
+                className="inline-flex items-center gap-2 rounded-md border border-primary/50 bg-primary/25 px-5 py-3 text-sm font-semibold text-foreground shadow-glow transition-transform hover:-translate-y-0.5"
+              >
+                View work ↓
+              </a>
+              <a
+                href={mailtoUrl}
+                className="inline-flex items-center gap-2 rounded-md border border-border bg-background/45 px-5 py-3 text-sm font-semibold text-foreground backdrop-blur transition-colors hover:border-stardust hover:text-stardust"
+              >
+                <Mail className="h-4 w-4" />
+                Email me
+              </a>
             </div>
-
-            <div className="mt-10 grid gap-3 sm:grid-cols-3 md:mt-12">
-              {profile.stats.map((stat) => (
-                <div
-                  key={stat.label}
-                  className="rounded-lg border border-border/65 bg-card/40 p-4 backdrop-blur"
-                >
-                  <p className="text-xs uppercase tracking-[0.22em] text-muted-foreground">
-                    {stat.label}
-                  </p>
-                  <p className="mt-2 text-lg font-semibold text-foreground">{stat.value}</p>
-                </div>
-              ))}
-            </div>
+            <p className="font-mono text-[10px] tracking-[0.25em] text-foreground/15 mt-6">
+              ↓ scroll
+            </p>
           </div>
         </header>
 
