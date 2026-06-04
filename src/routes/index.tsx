@@ -1,9 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowDown, ArrowUpRight, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Download, Github, Linkedin, Mail } from "lucide-react";
 import heroImage from "@/assets/space-hero.jpg";
 import { featuredProjects, profile } from "@/data/projects";
 import { ProjectCard } from "@/components/ProjectCard";
 
+const mailtoUrl = `mailto:${profile.email}?subject=${encodeURIComponent(profile.emailSubject)}`;
 const gmailComposeUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
   profile.email,
 )}`;
@@ -19,6 +20,23 @@ export const Route = createFileRoute("/")({
   }),
   component: Portfolio,
 });
+
+function ResumeLink({ className }: { className: string }) {
+  const hasResumeUrl = Boolean(profile.resume.url);
+
+  return (
+    <a
+      href={profile.resume.url || mailtoUrl}
+      target={hasResumeUrl ? "_blank" : undefined}
+      rel={hasResumeUrl ? "noopener noreferrer" : undefined}
+      aria-label={hasResumeUrl ? profile.resume.label : "Request resume by email"}
+      className={className}
+    >
+      <Download className="h-4 w-4" />
+      {hasResumeUrl ? profile.resume.label : profile.resume.fallbackLabel}
+    </a>
+  );
+}
 
 function Portfolio() {
   return (
@@ -54,31 +72,30 @@ function Portfolio() {
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_10%,oklch(0.36_0.14_260_/_0.28),transparent_58%)]" />
           <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-b from-transparent via-background/75 to-background" />
 
-          <div className="relative mx-auto max-w-6xl px-5 pb-20 pt-32 md:px-6 md:pb-24 md:pt-40">
-            <div className="max-w-4xl">
+          <div className="relative mx-auto max-w-6xl px-5 pb-16 pt-24 md:px-6 md:pb-20 md:pt-32">
+            <div className="max-w-5xl">
               <p className="mb-5 text-sm uppercase tracking-[0.28em] text-stardust">
                 {profile.title} at {profile.company}
               </p>
-              <h1 className="text-5xl font-bold leading-tight text-foreground md:text-7xl">
+              <h1 className="max-w-4xl text-4xl font-bold leading-tight text-foreground sm:text-5xl md:text-6xl">
                 {profile.headline}
               </h1>
-              <p className="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground md:text-xl">
+              <p className="mt-5 max-w-2xl text-base leading-7 text-muted-foreground md:text-lg md:leading-8">
                 {profile.bio} I like the parts of software where product behavior, API contracts,
                 and data models all have to line up.
               </p>
 
               <div className="mt-8 flex flex-wrap gap-3">
+                <ResumeLink className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-glow transition-transform hover:-translate-y-0.5" />
                 <a
                   href="#projects"
-                  className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-glow transition-transform hover:-translate-y-0.5"
+                  className="inline-flex items-center gap-2 rounded-md border border-border bg-background/45 px-5 py-3 text-sm font-semibold text-foreground backdrop-blur transition-colors hover:border-stardust hover:text-stardust"
                 >
                   View work
                   <ArrowDown className="h-4 w-4" />
                 </a>
                 <a
-                  href={gmailComposeUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href={mailtoUrl}
                   className="inline-flex items-center gap-2 rounded-md border border-border bg-background/45 px-5 py-3 text-sm font-semibold text-foreground backdrop-blur transition-colors hover:border-stardust hover:text-stardust"
                 >
                   <Mail className="h-4 w-4" />
@@ -87,7 +104,7 @@ function Portfolio() {
               </div>
             </div>
 
-            <div className="mt-16 grid gap-3 sm:grid-cols-3">
+            <div className="mt-10 grid gap-3 sm:grid-cols-3 md:mt-12">
               {profile.stats.map((stat) => (
                 <div
                   key={stat.label}
@@ -108,18 +125,49 @@ function Portfolio() {
             <div>
               <p className="text-sm uppercase tracking-[0.28em] text-stardust">Selected work</p>
               <h2 className="mt-3 text-4xl font-bold text-foreground md:text-5xl">
-                Projects in progress
+                Selected Engineering Work
               </h2>
             </div>
             <p className="max-w-xl text-sm leading-6 text-muted-foreground">
-              These are the tracks I plan to build and highlight next. Each one is chosen to show
-              full-stack delivery, database thinking, and practical engineering judgment.
+              A focused set of projects that show full-stack delivery, database thinking, mobile
+              implementation, and practical engineering judgment through code or demos.
             </p>
           </div>
 
           <div className="grid gap-5 lg:grid-cols-3">
             {featuredProjects.map((project, index) => (
               <ProjectCard key={project.title} project={project} index={index} />
+            ))}
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-6xl px-5 py-20 md:px-6">
+          <div className="mb-8 flex flex-col justify-between gap-5 md:flex-row md:items-end">
+            <div>
+              <p className="text-sm uppercase tracking-[0.28em] text-stardust">Toolbox</p>
+              <h2 className="mt-3 text-4xl font-bold text-foreground md:text-5xl">
+                Skills recruiters can scan quickly
+              </h2>
+            </div>
+            <p className="max-w-xl text-sm leading-6 text-muted-foreground">
+              The portfolio leans into the same stack areas I want hiring teams to remember:
+              practical frontend work, API-backed products, database design, and mobile execution.
+            </p>
+          </div>
+
+          <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-4">
+            {profile.skillGroups.map((skill) => (
+              <div
+                key={skill.label}
+                className="rounded-lg border border-border/65 bg-card/40 p-4 backdrop-blur"
+              >
+                <p className="text-xs uppercase tracking-[0.22em] text-muted-foreground">
+                  {skill.label}
+                </p>
+                <p className="mt-2 text-sm font-semibold leading-6 text-foreground">
+                  {skill.value}
+                </p>
+              </div>
             ))}
           </div>
         </section>
@@ -163,11 +211,19 @@ function Portfolio() {
           </p>
 
           <div className="mt-9 flex flex-wrap justify-center gap-3">
+            <ResumeLink className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5" />
+            <a
+              href={mailtoUrl}
+              className="inline-flex items-center gap-2 rounded-md border border-border bg-background/45 px-5 py-3 text-sm font-semibold text-foreground transition-colors hover:border-stardust hover:text-stardust"
+            >
+              <Mail className="h-4 w-4" />
+              Email me
+            </a>
             <a
               href={gmailComposeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 rounded-md border border-border bg-background/45 px-5 py-3 text-sm font-semibold text-foreground transition-colors hover:border-stardust hover:text-stardust"
             >
               <Mail className="h-4 w-4" />
               Open Gmail
@@ -197,7 +253,7 @@ function Portfolio() {
 
       <footer className="border-t border-border/60 py-8 text-center text-sm text-muted-foreground">
         <p>
-          {new Date().getFullYear()} {profile.name}. Built with React and a little stardust.
+          {new Date().getFullYear()} {profile.name}. Built with React, TanStack, and Tailwind.
         </p>
       </footer>
     </div>

@@ -27,7 +27,7 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
         <p className="mt-4 text-sm leading-6 text-muted-foreground">{project.description}</p>
 
         <div className="mt-6 rounded-md border border-border/60 bg-background/35 p-4">
-          <p className="text-xs uppercase tracking-[0.22em] text-muted-foreground">Proof point</p>
+          <p className="text-xs uppercase tracking-[0.22em] text-muted-foreground">Evidence</p>
           <p className="mt-2 text-sm leading-6 text-foreground/90">{project.impact}</p>
         </div>
 
@@ -46,17 +46,17 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
           ))}
         </div>
 
-        <div className="mt-8 flex gap-3">
+        <div className="mt-8 flex flex-wrap gap-3">
           {project.demoVideoUrl && (
             <a
               href={project.demoVideoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={project.demoVideoLabel ?? `Watch demo for ${project.title}`}
-              title={project.demoVideoLabel ?? `Watch demo for ${project.title}`}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border bg-background/50 text-foreground transition-colors hover:border-stardust hover:text-stardust"
+              aria-label={`Watch demo for ${project.title}`}
+              className="inline-flex h-10 items-center justify-center gap-2 rounded-md border border-border bg-background/50 px-3 text-sm font-semibold text-foreground transition-colors hover:border-stardust hover:text-stardust"
             >
               <CirclePlay className="h-4 w-4" />
+              {project.demoVideoLabel ?? "Demo"}
             </a>
           )}
           {project.sourceUrl && (
@@ -65,18 +65,22 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`View source for ${project.title}`}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border bg-background/50 text-foreground transition-colors hover:border-stardust hover:text-stardust"
+              className="inline-flex h-10 items-center justify-center gap-2 rounded-md border border-border bg-background/50 px-3 text-sm font-semibold text-foreground transition-colors hover:border-stardust hover:text-stardust"
             >
               <Github className="h-4 w-4" />
+              {project.sourceLabel ?? "Source"}
             </a>
           )}
           {project.liveUrl && (
             <a
               href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label={`Open ${project.title}`}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border bg-background/50 text-foreground transition-colors hover:border-stardust hover:text-stardust"
+              className="inline-flex h-10 items-center justify-center gap-2 rounded-md border border-border bg-background/50 px-3 text-sm font-semibold text-foreground transition-colors hover:border-stardust hover:text-stardust"
             >
               <ArrowUpRight className="h-4 w-4" />
+              {project.liveLabel ?? "Live"}
             </a>
           )}
         </div>
