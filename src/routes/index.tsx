@@ -135,10 +135,10 @@ function Portfolio() {
           <div className="mb-10 flex flex-col justify-between gap-5 md:flex-row md:items-end">
             <div>
               <p className="font-mono text-xs tracking-[0.4em] uppercase text-stardust/55 mb-3">
-                Selected work
+                Featured work
               </p>
               <h2 className="text-4xl font-bold text-foreground md:text-5xl">
-                Selected Engineering <em className="italic text-gradient-aurora">Work</em>
+                Featured Engineering <em className="italic text-gradient-aurora">Work</em>
               </h2>
             </div>
             <p className="max-w-xl text-sm leading-6 text-muted-foreground">
@@ -163,20 +163,19 @@ function Portfolio() {
 
         <section ref={skillsRef} className="reveal-on-scroll mx-auto max-w-6xl px-5 py-20 md:px-6">
           <div className="divider-cosmic mb-10" />
-          <div className="mb-8 flex flex-col justify-between gap-5 md:flex-row md:items-end">
+          <div className="mb-8">
             <div>
               <p className="font-mono text-xs tracking-[0.4em] uppercase text-stardust/55 mb-3">
                 Toolbox
               </p>
+              <h2 className="text-4xl font-bold text-foreground md:text-5xl">
+                Engineering <em className="italic text-gradient-aurora">Toolbox</em>
+              </h2>
             </div>
-            <p className="max-w-xl text-sm leading-6 text-muted-foreground">
-              The portfolio leans into the same stack areas I want hiring teams to remember:
-              practical frontend work, API-backed products, database design, and mobile execution.
-            </p>
           </div>
 
           <div className="flex flex-col gap-4">
-            {profile.skillGroups.map((group, i) => (
+            {profile.skillGroups.map((group) => (
               <div key={group.label} className="flex items-baseline gap-4 flex-wrap">
                 <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-stardust/55 min-w-[72px]">
                   {group.label}
