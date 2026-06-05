@@ -46,14 +46,14 @@ export const projects: Project[] = [
     title: "Halfsies",
     eyebrow: "Product track",
     description:
-      "A full-stack app for splitting shared expenses and tracking who owes what, centered on clear workflows, reliable persistence, and simple user decisions.",
+      "A shared expense splitting app built across web and Android — tracks who owes what, syncs shared records, and keeps settlement state clear across both platforms.",
     impact:
-      "Frames practical database-backed product work around users, shared records, balances, and clear state changes.",
-    role: "Full-stack implementation, database design, product workflow",
+      "Covers database-backed product work across two platforms: a full-stack web app and a native Android client, both centered on shared state, balances, and user decisions.",
+    role: "Full-stack implementation, Android client, database design, product workflow",
     year: "2026",
     status: "Roadmap",
-    featured: false,
-    tags: ["Full-Stack", "Database", "Product UI", "Expense Tracking", "OCR"],
+    featured: true,
+    tags: ["Full-Stack", "Android", "Database", "Kotlin", "Expense Tracking"],
     sourceUrl: "https://github.com/eCabrera07/Halfsies",
     sourceLabel: "Source",
   },
@@ -72,6 +72,21 @@ export const projects: Project[] = [
     demoVideoUrl: "/videos/quem-portfolio-demo-human-voiceover.mp4",
     demoVideoLabel: "Demo",
     sourceUrl: "https://github.com/eCabrera07/QueM",
+    sourceLabel: "Source",
+  },
+  {
+    title: "FinanceFlow",
+    eyebrow: "In design",
+    description:
+      "A local web app that parses bank and credit card statements — PDF or CSV — extracts transactions, suggests categories, and writes organized data into a monthly Excel spreadsheet with a built-in review step before anything is saved.",
+    impact:
+      "Architecture focuses on a swappable categorization interface designed for rule-based matching at launch and Claude AI as a drop-in upgrade, with optional Google Sheets sync alongside local .xlsx output.",
+    role: "Architecture, system design, product workflow, interactive prototype",
+    year: "2026",
+    status: "Architecture phase",
+    featured: true,
+    tags: ["Next.js", "FastAPI", "Python", "openpyxl", "Personal Tool"],
+    sourceUrl: "https://github.com/eCabrera07/FinantialApp",
     sourceLabel: "Source",
   },
   {
@@ -119,12 +134,12 @@ export const profile = {
     {
       label: "Frontend",
       color: "purple" as const,
-      items: ["React", "TypeScript", "TanStack", "Tailwind"],
+      items: ["React", "Next.js", "TypeScript", "JavaScript", "TanStack", "Tailwind"],
     },
     {
       label: "Backend",
       color: "blue" as const,
-      items: ["FastAPI", "REST APIs", "Service workflows"],
+      items: ["FastAPI", "Python", "REST APIs", "OCR", "Service workflows"],
     },
     {
       label: "Database",

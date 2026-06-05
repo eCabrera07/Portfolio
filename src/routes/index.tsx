@@ -168,9 +168,6 @@ function Portfolio() {
               <p className="font-mono text-xs tracking-[0.4em] uppercase text-stardust/55 mb-3">
                 Toolbox
               </p>
-              <h2 className="text-4xl font-bold text-foreground md:text-5xl">
-                Skills recruiters can <em className="italic text-gradient-aurora">scan quickly</em>
-              </h2>
             </div>
             <p className="max-w-xl text-sm leading-6 text-muted-foreground">
               The portfolio leans into the same stack areas I want hiring teams to remember:
