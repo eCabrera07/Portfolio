@@ -134,7 +134,7 @@ export const profile = {
     {
       label: "Frontend",
       color: "purple" as const,
-      items: ["React", "Next.js", "TypeScript", "JavaScript", "TanStack", "Tailwind"],
+      items: ["React", "Next.js", "TypeScript", "JavaScript"],
     },
     {
       label: "Backend",
