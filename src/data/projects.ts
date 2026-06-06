@@ -23,7 +23,7 @@ export interface SkillGroup {
 }
 
 const defaultResumeUrl =
-  "https://drive.google.com/file/d/1fMWTyblPtpo0pe_5GV8_WzJI-T-zmMk7/view?usp=sharing";
+  "hhttps://drive.google.com/file/d/1PfzZ5YvgOiuyz6vhzM2LYCLtCMMcw66z/view?usp=sharing";
 const configuredResumeUrl = import.meta.env.VITE_RESUME_URL?.trim();
 
 export const projects: Project[] = [
