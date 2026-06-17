@@ -48,9 +48,10 @@ function ResumeLink({
 
 function Portfolio() {
   const [openProjectIndex, setOpenProjectIndex] = useState<number | null>(null);
+  const profileRef = useReveal<HTMLElement>();
   const projectsRef = useReveal<HTMLElement>();
   const skillsRef = useReveal<HTMLElement>();
-  const aboutRef = useReveal<HTMLElement>();
+  const approachRef = useReveal<HTMLElement>();
   const contactRef = useReveal<HTMLElement>();
   return (
     <div className="min-h-screen">
@@ -127,6 +128,41 @@ function Portfolio() {
         </header>
 
         <section
+          ref={profileRef}
+          id="about"
+          className="reveal-on-scroll mx-auto max-w-6xl px-5 py-20 md:px-6"
+        >
+          <div className="divider-cosmic mb-10" />
+          <div className="grid gap-8 md:grid-cols-[0.8fr_1.2fr] md:items-start">
+            <div>
+              <p className="font-mono text-xs tracking-[0.4em] uppercase text-stardust/55 mb-3">
+                Profile
+              </p>
+              <h2 className="text-4xl font-bold text-foreground md:text-5xl">
+                Collaborative engineer growing toward{" "}
+                <em className="italic text-gradient-aurora">AI engineering</em>
+              </h2>
+            </div>
+            <div className="relative border-l border-primary/25 pl-6">
+              <div className="absolute -left-px top-0 h-10 w-px bg-gradient-to-b from-stardust/70 to-transparent" />
+              <p className="text-base leading-[1.85] text-muted-foreground">
+                {profile.profileIntro}
+              </p>
+              <div className="mt-6 flex flex-wrap gap-2">
+                {profile.profileHighlights.map((highlight) => (
+                  <span
+                    key={highlight}
+                    className="rounded-full border border-primary/35 bg-card/45 px-3 py-1 text-sm text-stardust/80"
+                  >
+                    {highlight}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
           ref={projectsRef}
           id="projects"
           className="reveal-on-scroll relative mx-auto max-w-6xl px-5 pb-24 pt-8 md:px-6"
@@ -193,15 +229,15 @@ function Portfolio() {
         </section>
 
         <section
-          ref={aboutRef}
-          id="about"
+          ref={approachRef}
+          id="approach"
           className="reveal-on-scroll mx-auto max-w-6xl px-5 py-24 md:px-6"
         >
           <div className="divider-cosmic mb-10" />
           <div className="grid gap-8 md:grid-cols-[1fr_1.2fr] md:items-start">
             <div>
               <p className="font-mono text-xs tracking-[0.4em] uppercase text-stardust/55 mb-3">
-                About
+                Approach
               </p>
               <h2 className="text-4xl font-bold text-foreground md:text-5xl">
                 Built for real teams and <em className="italic text-gradient-aurora">real users</em>

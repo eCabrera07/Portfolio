@@ -116,10 +116,19 @@ export const profile = {
   title: "Level 2 Software Engineer",
   company: "AptimaPR",
   headline: "Full-stack software engineer focused on database-backed applications.",
-  bio: "Level 2 Software Engineer at AptimaPR with a passion for building practical full-stack systems across frontend, backend, and database layers.",
+  bio: "Collaborative Level 2 Software Engineer at AptimaPR, growing toward AI engineering. I build practical full-stack software that solves real problems and improves daily life and workplace efficiency. Bilingual in Spanish and English; team-oriented and mission-aligned.",
+  profileIntro:
+    "Teamwork-oriented and eager to keep learning, I enjoy solving practical problems and building software that helps people live better and teams work more efficiently. I communicate in Spanish and English, and I treat company goals as shared goals.",
+  profileHighlights: [
+    "AI engineering growth",
+    "Team-oriented",
+    "Bilingual Spanish/English",
+    "Human-centered software",
+    "Mission-aligned",
+  ],
   location: "United States",
   availability:
-    "Open to full-stack engineering conversations, especially database-heavy product work",
+    "Open to full-stack and AI engineering conversations, especially practical, database-heavy product work",
   email: "eddie.joel.7@gmail.com",
   emailSubject: "Portfolio inquiry",
   resume: {
@@ -129,7 +138,13 @@ export const profile = {
   },
   github: "https://github.com/ecabrera07",
   linkedin: "https://www.linkedin.com/in/ecabreracs/",
-  strengths: ["Database-backed apps", "Full-stack delivery", "API design", "Maintainable systems"],
+  strengths: [
+    "AI engineering growth",
+    "Database-backed apps",
+    "Team-oriented delivery",
+    "Bilingual Spanish/English",
+    "Mission-aligned systems",
+  ],
   skillGroups: [
     {
       label: "Frontend",
