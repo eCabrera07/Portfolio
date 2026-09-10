@@ -43,6 +43,21 @@ export const projects: Project[] = [
     sourceLabel: "Source",
   },
   {
+    title: "FluxRegister",
+    eyebrow: "Featured build",
+    description:
+      "A desktop point-of-sale application built with Electron — manages inventory, orders, customers, discounts, services, and taxes, and prints invoices, all stored locally in SQLite.",
+    impact:
+      "Demonstrates full desktop product work: IPC-driven architecture between Electron main and renderer processes, SQLite schema with migrations, customer group and category discount rules, CSV bulk import, and a sales report pipeline.",
+    role: "Full-stack desktop implementation, database design, IPC architecture, product workflow",
+    year: "2026",
+    status: "Active build",
+    featured: true,
+    tags: ["Electron", "React", "TypeScript", "SQLite", "Desktop"],
+    sourceUrl: "https://github.com/eCabrera07/FluxRegister",
+    sourceLabel: "Source",
+  },
+  {
     title: "Halfsies",
     eyebrow: "Product track",
     description:
