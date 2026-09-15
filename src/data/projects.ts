@@ -123,22 +123,21 @@ export const projects: Project[] = [
 export const featuredProjects = projects.filter((project) => project.featured);
 
 export const profile = {
-  name: "Eddie Cabrera",
+  name: "Eddie J Cabrera León",
   shortName: "Eddie",
   navLogo: "EJCL",
   headlineLine1: "Full-stack engineer focused on",
   headlineAccent: "database-backed applications.",
   title: "Level 2 Software Engineer",
-  company: "AptimaPR",
+  company: "Aptima",
   headline: "Full-stack software engineer focused on database-backed applications.",
-  bio: "Collaborative Level 2 Software Engineer at AptimaPR, growing toward AI engineering. I build practical full-stack software that solves real problems and improves daily life and workplace efficiency. Bilingual in Spanish and English; team-oriented and mission-aligned.",
+  bio: "Collaborative Level 2 Software Engineer at Aptima, growing toward AI engineering. I build practical full-stack software that solves real problems and improves daily life and workplace efficiency. Bilingual in Spanish and English; team-oriented and mission-aligned.",
   profileIntro:
     "Teamwork-oriented and eager to keep learning, I enjoy solving practical problems and building software that helps people live better and teams work more efficiently. I communicate in Spanish and English, and I treat company goals as shared goals.",
   profileHighlights: [
     "AI engineering growth",
     "Team-oriented",
     "Bilingual Spanish/English",
-    "Human-centered software",
     "Mission-aligned",
   ],
   location: "United States",
